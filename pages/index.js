@@ -14,9 +14,11 @@ const Index = ({campaigns}) => {
     return (
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <h1>Open Campaigns</h1>
+        <h1>Open Campaigns</h1>
+        <Grid container spacing={2}>
+         
           {campaigns?.map((campaign) => (
-            <Box key={campaign} sx={{ mt: 2 }}>
+            <Grid item xs={6}>
               <Card variant="outlined">
                 <CardContent>
                   <Typography
@@ -37,8 +39,9 @@ const Index = ({campaigns}) => {
                   </Link>
                 </CardActions>
               </Card>
-            </Box>
+            </Grid>
           ))}
+        </Grid>
         </Grid>
         <Grid item xs={4}>
           <Box sx={{mt:4, display: 'flex', justifyContent:'flex-end'}}>
