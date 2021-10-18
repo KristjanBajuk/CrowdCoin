@@ -4,10 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import {Router} from '../routes';
-
+import Link from 'next/link'
 export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -23,10 +20,14 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography style={{cursor: 'pointer'}}   onClick={()=>Router.push("/")} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link href="/">
+          <Typography style={{cursor: 'pointer'}} variant="h6" component="div" sx={{ flexGrow: 1 }}>
             CrowdCoin
           </Typography>
-          <Button color="inherit" onClick={()=>Router.push("/campaigns/new")}>New campaign</Button>
+          </Link>
+          <Link href="/campaigns/new">
+          <Button color="inherit">New campaign</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>

@@ -9,15 +9,18 @@ import Alert from '@mui/material/Alert';
 import factory from '../../ethereum/factory';
 import web3 from '../../ethereum/web3';
 
-import {Router} from '../../routes';
+import { useRouter } from 'next/router'
 
 const NewCampaign = () => {
+    const router = useRouter()
+
     const [loading, setLoading] = React.useState(false);
     const {handleSubmit, control, setError, formState: { errors } } = useForm({ defaultValues: {
         minimumContribution: "",
       }});
 
   const onSubmit = async(data) =>{
+
     setLoading(true);
      try {
       
@@ -26,7 +29,7 @@ const NewCampaign = () => {
         await factory.methods.createCampaign(data?.minimumContribution).send({
             from: accounts[0]
         });
-        Router.pushRoute('/');
+        router.push('/');
     } catch (error) {
         console.log(error);
         setError("minimumContribution", error);
